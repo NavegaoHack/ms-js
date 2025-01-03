@@ -1,0 +1,20 @@
+{
+  "name": "msjs",
+  "version": "0.0.1",
+  "description": "mergesort algorithm graphical example",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "tailwind": "npx tailwindcss -i src/css/input.css -o src/css/output.css --watch"
+  },
+  "keywords": [
+    "mergesort",
+    "sort",
+    "algorithm"
+  ],
+  "author": "navegao",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

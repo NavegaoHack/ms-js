@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../fonts/roboto/static/RobotoMono-SemiBold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../fonts/roboto/static/RobotoMono-Bold.ttf") format("truetype");
+    font-weight: bolder;
+    font-style: normal;
+}
+
+body {
+    font-family: "Roboto";
+}
