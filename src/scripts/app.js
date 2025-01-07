@@ -9,6 +9,7 @@ console.log(nodeContainer)
 const anim = {
     keyframeLeft: [{ transform: 'translate(-1rem, 2rem)' }],
     keyframeRight: [{ transform: 'translate(1rem, 2rem)' }],
+    keyframeDown: [{ transform: 'translate(0, 4rem' }],
     opts: {
         duration: 250,
         easing: 'ease-out',
@@ -41,6 +42,12 @@ function downRight(arr) {
         node.animate(anim.keyframeRight, anim.opts)
     })
 }
+function downBottom(arr) {
+
+    arr.forEach(node => {
+        node.animate(anim.keyframeDown, anim.opts)
+    })
+}
 
 function cloneNodes(arrLeft, arrRight) {
     let container1 = nodeContainer.cloneNode()
@@ -58,28 +65,33 @@ function cloneNodes(arrLeft, arrRight) {
 
 }
 
-function mS(arr) {
-    if (arr.length < 2) return
-
-    const arrCopy = []
-
+function copy(arr) {
+    let arrclone = []
     arr.forEach(node => {
-        arrCopy.push(node.cloneNode(true))
+        nodecloned = node.cloneNode(true)
+        arrclone.push(nodecloned)
+        container = nodeContainer.cloneNode()
+        container.appendChild(nodecloned)
+        containerNodeContainer.appendChild(container)
     })
+    return arrclone
+}
 
-    const half = Math.ceil(arr.length / 2)
-    const left = arrCopy.slice(0, half)
-    const right = arrCopy.slice(half)
+function mS(arr) {
+    //if (arr.length < 2) return
 
-    cloneNodes(left, right)
+    arrCloned = copy(arr)
+    //const half = Math.ceil(arr.length / 2)
+    //const left = arr.slice(0, half)
+    //const right = arr.slice(half)
 
-    downLeft(left)
-    downRight(right)
 
+    //downLeft(left)
+    //downRight(right)
+    
+    downBottom(arrCloned)
 
     //mS(left)
     //mS(right)
 
-    console.log(left)
-    console.log(right)
 }
