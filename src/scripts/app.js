@@ -1,5 +1,7 @@
 const nodeNumbers = document.querySelectorAll(".nodeNumber")
 const nodeContainer = document.querySelector(".nodeContainer")
+const nodeArray = document.querySelector(".nodeArray")
+const nodeArrayChild = document.querySelector(".nodeArrayChild")
 const containerContainer = document.querySelector(".containerContainer")
 
 function match(elem1, elem2) {
@@ -40,12 +42,26 @@ async function mS(nodeNumbers) {
     console.log(nodeNumbers)
     const half = Math.ceil(nodeNumbers.length / 2)
     console.log(half)
+
+    const arrayL = nodeArray.cloneNode()
     const containerL = nodeContainer.cloneNode()
+
+    const arrayR = nodeArray.cloneNode()
     const containerR = nodeContainer.cloneNode()
-    containerContainer.appendChild(containerL)
-    containerContainer.appendChild(containerR)
+
+    containerContainer
+        .appendChild(
+            containerL
+                .appendChild(arrayL)
+    )
+    containerContainer
+        .appendChild(
+            containerR
+                .appendChild(arrayR)
+    )
+    
     containerL.classList.add("absolute", "top-0", "left-0")
-    containerR.classList.add("absolute","top-0", "right-0")
+    containerR.classList.add("absolute", "top-0", "right-0")
 
 
     nodeNumbers.forEach((node, i) => {

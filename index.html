@@ -20,11 +20,28 @@
 
     <main class="relative">
         <div class="absolute m-auto w-min left-0 right-0 containerContainer">
-            <div class="flex justify-center gap-2 transition-opacity nodeContainer">
-                <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
-                <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
-                <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
+            <div class="nodeContainer">
+                <div class="flex justify-center gap-2 transition-opacity nodeArray">
+                    <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
+                    <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
+                    <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
+                </div>
+                <div class="relative nodeArrayChild">
 
+                    <div class="absolute w-full containerContainer">
+                        <div class="nodeContainer">
+                            <div class="absolute left-0 flex justify-center gap-2 transition-opacity nodeArray">
+                                <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
+                                <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
+                            </div>
+                            <div class="absolute right-0 flex justify-center gap-2 transition-opacity nodeArray">
+                                <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition-opacity nodeNumber">2</div>
+                            </div>
+                            <div class="relative nodeArrayChild"></div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </main>
