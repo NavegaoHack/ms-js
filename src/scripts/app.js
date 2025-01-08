@@ -1,97 +1,73 @@
-const sortBtn = document.querySelector("#sortBtn")
-const unsortBtn = document.querySelector("#unsortBtn")
-const nodeNumbers = Array.from(document.querySelectorAll(".nodeNumber"))
-const nodeContainer = document.querySelector(".nodeContainer").cloneNode()
-const containerNodeContainer = document.querySelector(".containerNodeContainer")
+const nodeNumbers = document.querySelectorAll(".nodeNumber")
+const nodeContainer = document.querySelector(".nodeContainer")
+const containerContainer = document.querySelector(".containerContainer")
 
-console.log(nodeContainer)
+function match(elem1, elem2) {
+    const startpos = elem1.getBoundingClientRect()
+    const endpos = elem2.getBoundingClientRect()
 
-const anim = {
-    keyframeLeft: [{ transform: 'translate(-1rem, 2rem)' }],
-    keyframeRight: [{ transform: 'translate(1rem, 2rem)' }],
-    keyframeDown: [{ transform: 'translate(0, 4rem' }],
-    opts: {
+    // elem2.style.transform = `translateX(${startpos.x}px)`
+}
+
+function animDown(node) {
+    console.log(node)
+    node.animate({transform: "translateY(3em)"}, {
         duration: 250,
-        easing: 'ease-out',
-        fill: 'forwards'
-    }
+        fill: "forwards",
+        easing: "ease-in-out"
+    })
+}
+function animLeft(node) {
+    console.log(node)
+    return node.animate({transform: "translate(-1em, 4em)"}, {
+        duration: 250,
+        fill: "forwards",
+        easing: "ease-in-out"
+    })
+}
+function animRight(node) {
+    console.log(node)
+    return node.animate({transform: "translate(1em, 4em)"}, {
+        duration: 250,
+        fill: "forwards",
+        easing: "ease-in-out"
+    }).isFinished
 }
 
-sortBtn.addEventListener("click", function() {
-    console.log("SORT")
+async function mS(nodeNumbers) {
+    if (nodeNumbers.length < 2) return
 
-    mS(nodeNumbers)
+    console.log(nodeNumbers)
+    const half = Math.ceil(nodeNumbers.length / 2)
+    console.log(half)
+    const containerL = nodeContainer.cloneNode()
+    const containerR = nodeContainer.cloneNode()
+    containerContainer.appendChild(containerL)
+    containerContainer.appendChild(containerR)
+    containerL.classList.add("absolute", "top-0", "left-0")
+    containerR.classList.add("absolute","top-0", "right-0")
+
+
+    nodeNumbers.forEach((node, i) => {
+        if (i < half)
+            containerL.appendChild(node.cloneNode(true))
+        else 
+            containerR.appendChild(node.cloneNode(true))
+    })
+
+    match(nodeNumbers[0], containerL)
+    match(nodeNumbers[half], containerR)
+
+    await animLeft(containerL)
+    await animRight(containerR)
+
+    // mS(Array.from(containerL.children))
+    // mS(Array.from(containerR.children))
+
+
+}
+
+document.querySelector("#sortBtn")
+        .addEventListener("click", function () {
+            mS(Array.from(nodeNumbers))
 })
-
-unsortBtn.addEventListener("click", function() {
-    console.log("NO SORT")
-for (let i=0; i < nodeNumbers.length; i++) {
-    nodeNumbers[i].style.transform = "translateY(0em)"
-}
-})
-
-function downLeft(arr) {
-    arr.forEach(node => {
-        node.animate(anim.keyframeLeft, anim.opts)
-    })
-}
-
-function downRight(arr) {
-
-    arr.forEach(node => {
-        node.animate(anim.keyframeRight, anim.opts)
-    })
-}
-function downBottom(arr) {
-
-    arr.forEach(node => {
-        node.animate(anim.keyframeDown, anim.opts)
-    })
-}
-
-function cloneNodes(arrLeft, arrRight) {
-    let container1 = nodeContainer.cloneNode()
-    let container2 = nodeContainer.cloneNode()
-    
-    arrLeft.forEach(node => {
-        container1.appendChild(node.cloneNode(true))
-    })
-    arrRight.forEach(node => {
-        container2.appendChild(node.cloneNode(true))
-    })
-
-    containerNodeContainer.appendChild(container1)
-    containerNodeContainer.appendChild(container2)
-
-}
-
-function copy(arr) {
-    let arrclone = []
-    arr.forEach(node => {
-        nodecloned = node.cloneNode(true)
-        arrclone.push(nodecloned)
-        container = nodeContainer.cloneNode()
-        container.appendChild(nodecloned)
-        containerNodeContainer.appendChild(container)
-    })
-    return arrclone
-}
-
-function mS(arr) {
-    //if (arr.length < 2) return
-
-    arrCloned = copy(arr)
-    //const half = Math.ceil(arr.length / 2)
-    //const left = arr.slice(0, half)
-    //const right = arr.slice(half)
-
-
-    //downLeft(left)
-    //downRight(right)
-    
-    downBottom(arrCloned)
-
-    //mS(left)
-    //mS(right)
-
-}
