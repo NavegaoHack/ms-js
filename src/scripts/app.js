@@ -15,6 +15,8 @@ const nodeNumberModel = document.querySelector(".nodeNumber").cloneNode()
 const parentContainer = document.querySelector(".containerContainer")
 parentContainer.querySelector(".nodeArray").innerHTML = ""
 
+const container = document.querySelector(".nodeContainer")
+
 
 function nodeNumber(value) {
     const newNode = nodeNumberModel.cloneNode()
@@ -33,29 +35,38 @@ defaultUnsortList.forEach(value => {
 sortBtn.addEventListener("click", function() {
     console.log(parentContainer)
     console.log(containerModel)
-    //mS(parentContainer)
+    mS(container)
 })
 
 
 
 function mS(container) {
-    const nodes = container.querySelector(".nodeArray").children
+    const nodes = Array.from(container.querySelector(".nodeArray").children)
     if ( nodes.length < 2 ) return
 
-    const half = Math.ceil(nodeslength)
+    const half = Math.ceil(nodes.length / 2)
     console.log(half)
 
     const leftContainer = containerModel.cloneNode(true)
+    leftContainer.classList.add("left-0", "-translate-x-4", "translate-y-4")
     const rightContainer = containerModel.cloneNode(true)
-
+    rightContainer.classList.add("right-0", "translate-x-4", "translate-y-4")
 
     nodes.forEach((node, i) => {
+        console.log(i, half)
         if (i < half)
             leftContainer.querySelector(".nodeArray").appendChild(node.cloneNode(true))
         else
             rightContainer.querySelector(".nodeArray").appendChild(node.cloneNode(true))
     })
 
+    console.log(leftContainer)
+    console.log(rightContainer)
 
+    container.querySelector(".nodeArrayChild").appendChild(parentContainerModel.cloneNode())
+    container.querySelector(".containerContainer").appendChild(leftContainer)
+    container.querySelector(".containerContainer").appendChild(rightContainer)
+
+    mS(rightContainer)
     
 }
