@@ -38,9 +38,11 @@ sortBtn.addEventListener("click", function() {
     mS(container)
 })
 
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-
-function mS(container) {
+async function mS(container) {
     const nodes = Array.from(container.querySelector(".nodeArray").children)
     if ( nodes.length < 2 ) return
 
@@ -65,8 +67,11 @@ function mS(container) {
 
     container.querySelector(".nodeArrayChild").appendChild(parentContainerModel.cloneNode())
     container.querySelector(".containerContainer").appendChild(leftContainer)
+    await timeout(1000)
     container.querySelector(".containerContainer").appendChild(rightContainer)
+    await timeout(1000)
 
+    mS(leftContainer)
     mS(rightContainer)
     
 }
