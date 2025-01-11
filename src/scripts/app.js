@@ -71,8 +71,8 @@ async function mS(container) {
             rightContainer.querySelector(".nodeArray").appendChild(node.cloneNode(true))
     })
 
-
     await timeout(50) //avoiding appending / execution delay
+    container.querySelector(".nodeArray").classList.add("opacity-75")
     leftContainer.classList.remove("-translate-y-12")
     leftContainer.classList.add("-translate-x-4", "translate-y-4")
     console.log(leftContainer)
