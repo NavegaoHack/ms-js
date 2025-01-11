@@ -38,6 +38,10 @@ sortBtn.addEventListener("click", function() {
     mS(container)
 })
 
+function aux() {
+    container.classList.toggle("translate-x-4")
+}
+
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -49,10 +53,15 @@ async function mS(container) {
     const half = Math.ceil(nodes.length / 2)
     console.log(half)
 
+    
+    container.querySelector(".nodeArrayChild").appendChild(parentContainerModel.cloneNode())
     const leftContainer = containerModel.cloneNode(true)
-    leftContainer.classList.add("left-0", "-translate-x-4", "translate-y-4")
+    leftContainer.classList.add("left-0", "-translate-y-12")
+    container.querySelector(".containerContainer").appendChild(leftContainer)
+    
     const rightContainer = containerModel.cloneNode(true)
-    rightContainer.classList.add("right-0", "translate-x-4", "translate-y-4")
+    rightContainer.classList.add("right-0", "-translate-y-12")
+    container.querySelector(".containerContainer").appendChild(rightContainer)
 
     nodes.forEach((node, i) => {
         console.log(i, half)
@@ -62,14 +71,16 @@ async function mS(container) {
             rightContainer.querySelector(".nodeArray").appendChild(node.cloneNode(true))
     })
 
-    console.log(leftContainer)
-    console.log(rightContainer)
 
-    container.querySelector(".nodeArrayChild").appendChild(parentContainerModel.cloneNode())
-    container.querySelector(".containerContainer").appendChild(leftContainer)
-    await timeout(1000)
-    container.querySelector(".containerContainer").appendChild(rightContainer)
-    await timeout(1000)
+    await timeout(50) //avoiding appending / execution delay
+    leftContainer.classList.remove("-translate-y-12")
+    leftContainer.classList.add("-translate-x-4", "translate-y-4")
+    console.log(leftContainer)
+    await timeout(700)
+    rightContainer.classList.remove("-translate-y-12")
+    rightContainer.classList.add("translate-x-4", "translate-y-4")
+    console.log(rightContainer)
+    await timeout(700)
 
     mS(leftContainer)
     mS(rightContainer)
