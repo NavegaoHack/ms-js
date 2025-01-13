@@ -6,6 +6,8 @@ const animOpts = {
     easing: "ease-in-out"
 }
 
+const arrayBackups = []
+
 
 const parentContainerModel = document.querySelector(".containerContainer").cloneNode()
 parentContainerModel.classList.remove("w-min", "m-auto", "left-0", "right-0")
@@ -29,7 +31,7 @@ function nodeNumber(value) {
     return newNode
 }
 
-const defaultUnsortList = [4, 2, -1, 1]
+const defaultUnsortList = [4, 2, -1]
 // const defaultUnsortList = [1, 2, 3, 4]
 // const defaultUnsortList = [4, 2, -1]
 
@@ -40,9 +42,15 @@ defaultUnsortList.forEach(value => {
 })
 
 sortBtn.addEventListener("click", function() {
-    console.log(parentContainer)
-    console.log(containerModel)
+    //cleaning nodeArrayChild element
+    arrayBackups.push(document.querySelector(".nodeArray").cloneNode(true))
+    document.querySelector(".nodeArrayChild").innerHTML = ""
     mS(container)
+})
+
+unsortBtn.addEventListener("click", function() {
+    container.firstElementChild.remove()
+    container.prepend(arrayBackups.at(-1))
 })
 
 function aux() {
