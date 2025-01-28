@@ -1,6 +1,7 @@
 import { mS } from "./algorithm.js"
 import { arrayBackups } from "./backups.js"
 import { nodeNumberModel } from "./dom-models.js"
+import { timeout } from "./animation-utils.js"
 
 const sortBtn = document.querySelector("#sortBtn")
 const unsortBtn = document.querySelector("#unsortBtn")
@@ -34,7 +35,13 @@ sortBtn.addEventListener("click", function() {
     mS(container)
 })
 
-unsortBtn.addEventListener("click", function() {
+unsortBtn.addEventListener("click", async function() {
+    container.classList.add("translate-y-12", "opacity-0")
+    
+    await timeout(700)
+    
     container.firstElementChild.remove()
     container.prepend(arrayBackups.at(-1))
+    
+    container.classList.add("translate-y-12", "opacity-0")
 })
