@@ -105,13 +105,6 @@ function chvalue(elem1, elem2) {
     elem1.innerText = elem2.innerText
 }
 
-function editArray(nodeArray) {
-    console.log(nodeArray)
-
-    nodeArray[0].classList.add("translate-y-8")
-}
-
 export {
     mS,
-    editArray
 }

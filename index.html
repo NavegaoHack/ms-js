@@ -28,11 +28,11 @@
         </div>
     </main>
 
-    <custom-arrayeditor class="absolute bottom-8 transition duration-500 w-full flex justify-center gap-4" id="editor">
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2">p</div>
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2">m</div>
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2">l</div>
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2">n</div>
+    <custom-arrayeditor class="absolute bottom-8 transition duration-500 w-full flex justify-center gap-4" id="editor" data-currentindex="0">
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-move="-1">p</div>
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-chvalue="1">m</div>
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-chvalue="-1">l</div>
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-move="1">n</div>
     </custom-arrayeditor>
 
     <custom-controls class="absolute bottom-8 w-full h-12 flex justify-center gap-4 text-slate-100 bg-white text-2xl">
