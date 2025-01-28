@@ -1,15 +1,18 @@
-import { mS } from "./algorithm.js"
+import { mS, editArray } from "./algorithm.js"
 import { arrayBackups } from "./backups.js"
 import { nodeNumberModel } from "./dom-models.js"
 import { timeout } from "./animation-utils.js"
 
 const sortBtn = document.querySelector("#sortBtn")
 const unsortBtn = document.querySelector("#unsortBtn")
+const editBtn = document.querySelector("#editBtn")
 
 const parentContainer = document.querySelector(".containerContainer")
 parentContainer.querySelector(".nodeArray").innerHTML = ""
 
 const container = document.querySelector(".nodeContainer")
+
+const arrayEditor = document.querySelector("#editor")
 
 
 function nodeNumber(value) {
@@ -43,5 +46,10 @@ unsortBtn.addEventListener("click", async function() {
     container.firstElementChild.remove()
     container.prepend(arrayBackups.at(-1))
     
-    container.classList.add("translate-y-12", "opacity-0")
+    container.classList.remove("translate-y-12", "opacity-0")
+})
+
+editBtn.addEventListener("click", function() {
+    arrayEditor.classList.toggle("-translate-y-24")
+    //editArray(container.firstElementChild.children)
 })
