@@ -20,7 +20,7 @@
         <div class="absolute m-auto w-min left-0 right-0 containerContainer">
             <div class="nodeContainer transition duration-700 ease-in-out">
                 <div class="flex justify-center gap-2 transition-all nodeArray">
-                    <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition duration-700 ease-in-out nodeNumber"></div>
+                    <div class="w-12 h-12 bg-zinc-800 grid place-content-center text-slate-100 rounded-md text-2xl transition duration-700 ease-in-out nodeNumber"><p></p></div>
                 </div>
                 <div class="relative nodeArrayChild">
                 </div>
@@ -29,17 +29,22 @@
     </main>
 
     <custom-arrayeditor class="absolute bottom-8 transition duration-500 w-full flex justify-center gap-4" id="editor" data-currentindex="0">
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-move="-1">p</div>
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-chvalue="1">m</div>
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-chvalue="-1">l</div>
-        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2" data-move="1">n</div>
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2 cursor-pointer" data-move="-1">p</div>
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2 cursor-pointer" data-chvalue="1">m</div>
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2 cursor-pointer" data-chvalue="-1">l</div>
+        <div class="border-4 border-black w-12 h-12 rounded-md grid place-content-center transition hover:translate-y-1 active:translate-y-2 cursor-pointer" data-move="1">n</div>
     </custom-arrayeditor>
 
     <custom-controls class="absolute bottom-8 w-full h-12 flex justify-center gap-4 text-slate-100 bg-white text-2xl">
-        <button class="w-28 h-8 bg-zinc-800 grid place-content-center rounded-md hover:bg-zinc-700 active:bg-amber-600" id="sortBtn">sort</button>
-        <button class="w-28 h-8 bg-zinc-800 grid place-content-center rounded-md hover:bg-zinc-700 active:bg-amber-600" id="unsortBtn">unsort</button>
-        <button class="w-28 h-8 bg-zinc-800 grid place-content-center rounded-md hover:bg-zinc-700 active:bg-amber-600" id="editBtn">edit</button>
+        <button class="w-28 h-8 bg-zinc-800 grid place-content-center rounded-md hover:bg-zinc-700 active:bg-amber-600 cursor-pointer" id="sortBtn">sort</button>
+        <button class="w-28 h-8 bg-zinc-800 grid place-content-center rounded-md hover:bg-zinc-700 active:bg-amber-600 cursor-pointer" id="unsortBtn">unsort</button>
+        <button class="w-28 h-8 bg-zinc-800 grid place-content-center rounded-md hover:bg-zinc-700 active:bg-amber-600 cursor-pointer" id="editBtn">edit</button>
     </custom-controls>
+
+    <aside class="absolute right-0 top-0 h-full w-80 p-4 bg-slate-300">
+        <div id="arrayBackups" class="p-2 bg-slate-200 min-h-64 rounded-md flex flex-col justify-start gap-1 overflow-y-scroll">
+        </div>
+    </aside>
     <footer></footer>
 
 
