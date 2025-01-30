@@ -17,6 +17,7 @@ const arrayEditor = document.querySelector("#editor")
 const asideBackups = document.querySelector("#arrayBackups")
 const asideWindow = document.querySelector("#asideWindow")
 const btnAsideWindow = document.querySelectorAll("#toggleAsideWindow")
+const arrayInput = document.querySelector("#arrayInput")
 
 btnAsideWindow[0].addEventListener("click", function() {
     asideWindow.classList.toggle("translate-x-80")
@@ -24,6 +25,26 @@ btnAsideWindow[0].addEventListener("click", function() {
 btnAsideWindow[1].addEventListener("click", function() {
     asideWindow.classList.toggle("translate-x-80")
 })
+
+async function updateArray() {
+    container.classList.add("translate-y-12", "opacity-0")
+    
+    await timeout(700)
+    
+    const arrayContainer = container.firstElementChild.cloneNode()
+    container.firstElementChild.remove()
+
+    const array = arrayInput.value.split(',').filter(i => i !== '')
+    array.forEach(digit => {
+        arrayContainer.appendChild(nodeNumber(digit))
+    })
+    container.prepend(arrayContainer)
+
+
+    container.classList.remove("translate-y-12", "opacity-0")
+}
+
+arrayInput.addEventListener("input", updateArray)
 
 
 function nodeNumber(value) {
@@ -70,7 +91,12 @@ unsortBtn.addEventListener("click", async function() {
     await timeout(700)
     
     container.firstElementChild.remove()
-    container.prepend(arrayBackups.at(-1))
+
+    const array = arrayBackups.at(-1).cloneNode(true)
+
+    array.classList.remove("scale-50", "group-hover:scale-[0.6]", "h-2")
+
+    container.prepend(array)
     console.log(arrayBackups)
     
     container.classList.remove("translate-y-12", "opacity-0")
