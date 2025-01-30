@@ -8,7 +8,7 @@
 
     <script type="module" src="./src/scripts/app.js" defer></script>
 </head>
-<body>
+<body class="overflow-hidden">
     <header class="py-4">
         <div class="px-4">
             <h1 class="text-4xl">MS</h1>
@@ -41,10 +41,25 @@
         <button class="w-28 h-8 bg-zinc-800 grid place-content-center rounded-md hover:bg-zinc-700 active:bg-amber-600 cursor-pointer" id="editBtn">edit</button>
     </custom-controls>
 
-    <aside class="absolute right-0 top-0 h-full w-80 p-4 bg-slate-300">
-        <div id="arrayBackups" class="p-2 bg-slate-200 min-h-64 rounded-md flex flex-col justify-start gap-1 overflow-y-scroll">
+    <button class="absolute right-0 top-0 h-12 w-12 bg-slate-800 m-4 rounded-lg text-white" id="toggleAsideWindow">C</button>
+    
+    <aside class="absolute right-0 top-0 h-full w-80 p-4 translate-x-80 transition duration-300" id="asideWindow">
+
+        <div class="relative w-full h-full bg-slate-300 p-4 rounded-lg">
+            <button class="absolute right-0 top-0 h-8 w-8 bg-slate-800 m-4 rounded-lg text-white" id="toggleAsideWindow">C</button>
+            <h1 class="text-center capitalize text-2xl">options</h1>
+            <p class="text-center capitalize">previous arrays</p>
+            <div id="arrayBackups" class="p-2 bg-slate-200 min-h-64 rounded-md flex flex-col justify-start gap-1 overflow-y-scroll">
+            </div>
+            <form action="" class="flex flex-col justify-center my-8">
+                <label for="array">Write your array
+                    <span class="text-sm block">(separate by commas)</span>
+                </label>
+                <input type="text" name="array" id="array" placeholder="1,2,3,4" class="text-center">
+            </form>
         </div>
     </aside>
+
     <footer></footer>
 
 

@@ -15,6 +15,15 @@ const container = document.querySelector(".nodeContainer")
 const arrayEditor = document.querySelector("#editor")
 
 const asideBackups = document.querySelector("#arrayBackups")
+const asideWindow = document.querySelector("#asideWindow")
+const btnAsideWindow = document.querySelectorAll("#toggleAsideWindow")
+
+btnAsideWindow[0].addEventListener("click", function() {
+    asideWindow.classList.toggle("translate-x-80")
+})
+btnAsideWindow[1].addEventListener("click", function() {
+    asideWindow.classList.toggle("translate-x-80")
+})
 
 
 function nodeNumber(value) {
