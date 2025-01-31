@@ -19,6 +19,20 @@ const asideWindow = document.querySelector("#asideWindow")
 const btnAsideWindow = document.querySelectorAll("#toggleAsideWindow")
 const arrayInput = document.querySelector("#arrayInput")
 
+const currentState = {
+    isSorted: false,
+    isUnsorted: true,
+    inEditMode: false,
+    switch: () => {
+        currentState.isSorted = !currentState.isSorted
+        currentState.isUnsorted = !currentState.isUnsorted
+    },
+    switchEdit: () => {
+        currentState.inEditMode = !currentState.inEditMode
+    }
+}
+
+
 btnAsideWindow[0].addEventListener("click", function() {
     asideWindow.classList.toggle("translate-x-80")
 })
@@ -44,8 +58,21 @@ async function updateArray() {
     container.classList.remove("translate-y-12", "opacity-0")
 }
 
-arrayInput.addEventListener("input", updateArray)
+function watchInput() {
+    let timer;              // Timer identifier
 
+    arrayInput.addEventListener('input', (e) => {
+
+        clearTimeout(timer);
+
+        // Initiate the search request after a delay
+        timer = setTimeout(() => {
+            updateArray();
+        }, 500);
+    });
+}
+
+watchInput()
 
 function nodeNumber(value) {
     const newNode = nodeNumberModel.cloneNode()
