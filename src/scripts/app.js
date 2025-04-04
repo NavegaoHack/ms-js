@@ -92,14 +92,15 @@ defaultUnsortList.forEach(value => {
 
 function refreshBackups() {
     const backupContainer = document.createElement("div")
-    backupContainer.classList.add("w-full", "hover:bg-slate-100", "group", "h-8")
+    backupContainer.classList.add("flex", "justify-center" ,"hover:bg-slate-100", "group", "h-8")
     backupContainer.appendChild(arrayBackups.at(-1))
     asideBackups.appendChild(backupContainer)
 
 }
 
 function storeOnBackup(arrayStored) {
-   arrayStored.classList.add("scale-50", "group-hover:scale-[0.6]", "h-2")
+   arrayStored.classList.add("w-max", "scale-50", "group-hover:scale-[0.6]", "h-2")
+   
    arrayStored.dataset.index = arrayBackups.length
    arrayBackups.push(arrayStored)
 }
