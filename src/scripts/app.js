@@ -23,12 +23,16 @@ const currentState = {
     isSorted: false,
     isUnsorted: true,
     inEditMode: false,
+    onProcess: false,
     switch: () => {
         currentState.isSorted = !currentState.isSorted
         currentState.isUnsorted = !currentState.isUnsorted
     },
     switchEdit: () => {
         currentState.inEditMode = !currentState.inEditMode
+    },
+    switchProcess: () => {
+        currentState.onProcess = !currentState.onProcess
     }
 }
 
@@ -105,15 +109,74 @@ function storeOnBackup(arrayStored) {
    arrayBackups.push(arrayStored)
 }
 
+let messageTimer = null
+function messageAlert(message) {
+    
+    if (messageTimer == null) return
+    
+    messageLabel.classList.remove("opacity-0")
+    messageLabelText.innerText = message
+
+    messageTimer = setTimeout(()=>{
+
+        messageLabel.classList.add("opacity-0")
+    }, 2000)
+
+}
+
+
+
+async function reSort(container) {
+    currentState.switchProcess()
+    await mS(container)
+    console.log("b")
+    currentState.switchProcess()
+    currentState.switch()
+}
+
 sortBtn.addEventListener("click", function() {
     //cleaning nodeArrayChild element
+    if (currentState.inEditMode) {
+        console.log("edit mode")
+        return
+    }
+
+    if (currentState.isSorted) {
+        console.log("already sorted")
+        return
+    }
+
+    if (currentState.onProcess) {
+        console.log("on process")
+        return
+    }
+
     storeOnBackup(document.querySelector(".nodeArray").cloneNode(true))
     refreshBackups()
     document.querySelector(".nodeArrayChild").innerHTML = ""
-    mS(container)
+    reSort(container)
+
 })
 
 unsortBtn.addEventListener("click", async function() {
+    if (currentState.inEditMode) {
+        console.log("edit mode")
+        return
+    }
+
+    if (currentState.isUnsorted) {
+        console.log("already unsorted")
+        return
+    }
+
+
+    if (currentState.onProcess) {
+        console.log("on process")
+        return
+    }
+    
+    currentState.switchProcess()
+
     container.classList.add("translate-y-12", "opacity-0")
     
     await timeout(700)
@@ -128,12 +191,23 @@ unsortBtn.addEventListener("click", async function() {
     console.log(arrayBackups)
     
     container.classList.remove("translate-y-12", "opacity-0")
+
+    currentState.switch()
+    currentState.switchProcess()
 })
 
 editBtn.addEventListener("click", function() {
+    if (currentState.onProcess) {
+        console.log("on process")
+        return
+    }
+
+    currentState.switchEdit()
     arrayEditor.classList.toggle("-translate-y-24")
     container.firstElementChild.children[+arrayEditor.dataset.currentindex].classList.toggle("translate-y-8")
     arrayEditor.dataset.currentindex = 0
+    currentState.isSorted = false
+    currentState.isUnsorted = true
 })
 
 arrayEditor.addEventListener("click", async function(e) {
@@ -159,7 +233,7 @@ arrayEditor.addEventListener("click", async function(e) {
         nodeArray[i].innerText = +nodeArray[i].innerText + +e.target.dataset.chvalue
     }
 
-    //console.log(+e.target.dataset.chvalue)
+    console.log(+e.target.dataset.chvalue)
 })
 
 asideBackups.addEventListener("click", async function(e) {

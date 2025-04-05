@@ -87,11 +87,11 @@ async function mS(container) {
     container.querySelector(".nodeArray").classList.add("opacity-75")
     leftContainer.classList.remove("-translate-y-12")
     leftContainer.classList.add("-translate-x-4", "translate-y-4")
-    //console.log(leftContainer)
+    console.log(leftContainer)
     await timeout(700)
     rightContainer.classList.remove("-translate-y-12")
     rightContainer.classList.add("translate-x-4", "translate-y-4")
-    //console.log(rightContainer)
+    console.log(rightContainer)
     await timeout(700)
 
     const containerLeft = await mS(leftContainer)
