@@ -45,6 +45,18 @@ btnAsideWindow[1].addEventListener("click", function() {
 })
 
 async function updateArray() {
+    if (currentState.inEditMode) {
+        console.log("edit mode")
+        messageAlert("on Edit Mode", "close edit first")
+        return
+    }
+
+    if (currentState.onProcess) {
+        console.log("on process")
+        messageAlert("on Process")
+        return
+    }
+
     container.classList.add("translate-y-12", "opacity-0")
     
     await timeout(700)
@@ -60,6 +72,10 @@ async function updateArray() {
 
 
     container.classList.remove("translate-y-12", "opacity-0")
+
+
+    currentState.isSorted = false
+    currentState.isUnsorted = true
 }
 
 function watchInput() {
@@ -110,16 +126,18 @@ function storeOnBackup(arrayStored) {
 }
 
 let messageTimer = null
-function messageAlert(message) {
+function messageAlert(messageA, messageB = "please wait") {
     
-    if (messageTimer == null) return
+    if (messageTimer != null) return
     
     messageLabel.classList.remove("opacity-0")
-    messageLabelText.innerText = message
+    messageLabelText.innerText = messageA
+    messageLabelText2.innerText = messageB
 
     messageTimer = setTimeout(()=>{
 
         messageLabel.classList.add("opacity-0")
+        messageTimer = null
     }, 2000)
 
 }
@@ -138,16 +156,19 @@ sortBtn.addEventListener("click", function() {
     //cleaning nodeArrayChild element
     if (currentState.inEditMode) {
         console.log("edit mode")
+        messageAlert("on Edit Mode", "close edit first")
         return
     }
 
     if (currentState.isSorted) {
         console.log("already sorted")
+        messageAlert("already Sorted", "unsort first")
         return
     }
 
     if (currentState.onProcess) {
         console.log("on process")
+        messageAlert("on Process")
         return
     }
 
@@ -161,17 +182,20 @@ sortBtn.addEventListener("click", function() {
 unsortBtn.addEventListener("click", async function() {
     if (currentState.inEditMode) {
         console.log("edit mode")
+        messageAlert("on Edit Mode", "close edit first")
         return
     }
 
     if (currentState.isUnsorted) {
         console.log("already unsorted")
+        messageAlert("already Unsorted", "sort first")
         return
     }
 
 
     if (currentState.onProcess) {
         console.log("on process")
+        messageAlert("on Process")
         return
     }
     
@@ -199,6 +223,7 @@ unsortBtn.addEventListener("click", async function() {
 editBtn.addEventListener("click", function() {
     if (currentState.onProcess) {
         console.log("on process")
+        messageAlert("on Process")
         return
     }
 
@@ -237,6 +262,17 @@ arrayEditor.addEventListener("click", async function(e) {
 })
 
 asideBackups.addEventListener("click", async function(e) {
+    if (currentState.inEditMode) {
+        console.log("edit mode")
+        messageAlert("on Edit Mode", "close edit first")
+        return
+    }
+
+    if (currentState.onProcess) {
+        console.log("on process")
+        messageAlert("on Process")
+        return
+    }
 
     const index = e.target.firstElementChild.dataset.index 
     container.classList.add("translate-y-12", "opacity-0")
@@ -251,4 +287,7 @@ asideBackups.addEventListener("click", async function(e) {
     console.log(arrayBackups)
     
     container.classList.remove("translate-y-12", "opacity-0")
+
+    currentState.isSorted = false
+    currentState.isUnsorted = true
 })
