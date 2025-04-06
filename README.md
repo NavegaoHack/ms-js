@@ -1,11 +1,12 @@
 # MS.js | By navegaohack
-# Merge Sort algorithm visualization app inspired in Antonio Sarosi's Merge Sort project
+# Merge Sort algorithm visualization app
+### inspired in Antonio Sarosi's Merge Sort project
 
-|  Raycast Render Mode |
+| App preview |
 |:---:|
-|![Video Demo.](./img/msjspreview2.mp4 "Video demo.") |
+|![App Demo.](./img/msjspreview.jpg "Image demo.") |
 
-You can experiment, and PR new features
+You can experiment, and PR new feature^
 
 ## Controls
 
