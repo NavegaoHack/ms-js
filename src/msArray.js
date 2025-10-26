@@ -13,7 +13,7 @@ class MsArray {
     
     create(arr) {
         //early return element if array has created already
-        if (this.arr)
+        if (this.array)
             return this.element
 
         this.array = arr //assign array to the attribute
@@ -35,6 +35,15 @@ class MsArray {
         });
         
         return this.element
+    }
+
+    divide() {
+        var h = Math.ceil(this.array.length / 2);    
+
+        const left = this.array.slice(0, h)
+        const right = this.array.slice(h)
+
+        return { left, right }
     }
 }
 
