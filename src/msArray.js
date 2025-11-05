@@ -6,14 +6,22 @@ const styles = {
     unit: "size-8 border-2 grid place-content-center",
     toDown: "translate-y-12",
     toLeft: "-translate-x-8",
-    toRight: "translate-x-8"
+    toRight: "translate-x-8",
+    translateLeft: "translate(-2rem, 3rem)",
+    translateRight: "translate(2rem, 3rem)",
 }
+
+//element.animate({ transform: "translate(-2rem, 3rem)" }, { duration: 1000, fill: 'forwards' })
 
 class MsArray {
     constructor() {
         this.array = null
         this.element = null
         this.childrenContainer = null
+    }
+
+    isNomoreDividible() {
+        return this.array.length < 2
     }
     
     create(arr=null) {
@@ -72,8 +80,12 @@ class MsArray {
 
     move(to) {
         //true = right , false = left, but ever to down
-        this.element.classList.add(styles.toDown)
-        to ? this.element.classList.add(styles.toRight) : this.element.classList.add(styles.toLeft)
+
+        //this.element.classList.add(styles.toDown)
+        //to ? this.element.classList.add(styles.toRight) : this.element.classList.add(styles.toLeft)
+    
+        to ? this.element.animate({ transform: styles.translateRight }, { duration: 1000, fill: 'forwards' }) :
+            this.element.animate({ transform: styles.translateLeft }, { duration: 1000, fill: 'forwards' })
     }
 }
 

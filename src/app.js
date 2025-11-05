@@ -5,22 +5,32 @@ const msArray = new MsArray()
 
 mainCanvas.appendChild(msArray.create([1, 2, 3, 4]))
 
-sortBtn.onclick = () => {
+function recursiveDivision(arr) {
     console.log("execute")
-    console.log(msArray.divide())
+
+    if (arr.isNomoreDividible()) return
+
     
-    const { left, right } = msArray.divide()
+    const { left, right } = arr.divide()
     const msLeft = new MsArray()
     const msRight = new MsArray()
 
     msLeft.create(left)
     msRight.create(right)
-    msArray.childrenContainer.appendChild(msLeft.create())
-    msArray.childrenContainer.appendChild(msRight.create())
+    arr.childrenContainer.appendChild(msLeft.create())
+    arr.childrenContainer.appendChild(msRight.create())
 
     msLeft.move(false)
     msRight.move(true)
 
+    recursiveDivision(msLeft)
+    recursiveDivision(msRight)
+
+
+}
+
+sortBtn.onclick = () => {
+    recursiveDivision(msArray)
 }
 
 unsortBtn.onclick = () => {
