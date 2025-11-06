@@ -84,8 +84,9 @@ class MsArray {
         //this.element.classList.add(styles.toDown)
         //to ? this.element.classList.add(styles.toRight) : this.element.classList.add(styles.toLeft)
     
-        to ? this.element.animate({ transform: styles.translateRight }, { duration: 1000, fill: 'forwards' }) :
-            this.element.animate({ transform: styles.translateLeft }, { duration: 1000, fill: 'forwards' })
+        const animation = this.element.animate({ transform: to ? styles.translateRight : styles.translateLeft }, { duration: 1000, fill: 'forwards' })
+
+        return animation.finished
     }
 }
 

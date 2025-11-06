@@ -5,7 +5,7 @@ const msArray = new MsArray()
 
 mainCanvas.appendChild(msArray.create([1, 2, 3, 4]))
 
-function recursiveDivision(arr) {
+async function recursiveDivision(arr) {
     console.log("execute")
 
     if (arr.isNomoreDividible()) return
@@ -20,13 +20,25 @@ function recursiveDivision(arr) {
     arr.childrenContainer.appendChild(msLeft.create())
     arr.childrenContainer.appendChild(msRight.create())
 
-    msLeft.move(false)
-    msRight.move(true)
+    await msLeft.move(false)
+    await msRight.move(true)
 
-    recursiveDivision(msLeft)
-    recursiveDivision(msRight)
+    await recursiveDivision(msLeft)
+    await recursiveDivision(msRight)
+
+    sortArrays(msLeft, msRight)
 
 
+}
+
+async function sortArrays(arrLeft, arrRight) {
+    [...arrLeft.array, ...arrRight.array].map((arr, i) => {
+
+        arrLeft.array[i] <= arr ? console.log(arr, "from the left") : console.log(arr, "from the right")
+
+    })
+        
+    
 }
 
 sortBtn.onclick = () => {
