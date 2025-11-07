@@ -14,10 +14,15 @@ const styles = {
 //element.animate({ transform: "translate(-2rem, 3rem)" }, { duration: 1000, fill: 'forwards' })
 
 class MsArray {
-    constructor() {
+    constructor(parent = null) {
+        this.parent = parent
         this.array = null
         this.element = null
         this.childrenContainer = null
+    }
+
+    len() {
+        return this.array.length
     }
 
     isNomoreDividible() {
@@ -71,9 +76,17 @@ class MsArray {
 
     divide() {
         var h = Math.ceil(this.array.length / 2);    
+        
+        
+        const left = new MsArray(this)
+        const right = new MsArray(this)
 
-        const left = this.array.slice(0, h)
-        const right = this.array.slice(h)
+        left.create(this.array.slice(0, h))
+        right.create(this.array.slice(h))
+
+        this.childrenContainer.appendChild(left.create())
+        this.childrenContainer.appendChild(right.create())
+
 
         return { left, right }
     }
