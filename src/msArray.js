@@ -9,6 +9,7 @@ const styles = {
     toRight: "translate-x-8",
     translateLeft: "translate(-2rem, 3rem)",
     translateRight: "translate(2rem, 3rem)",
+    translateUp: "translate(0rem, -3rem)"
 }
 
 //element.animate({ transform: "translate(-2rem, 3rem)" }, { duration: 1000, fill: 'forwards' })
@@ -19,10 +20,26 @@ class MsArray {
         this.array = null
         this.element = null
         this.childrenContainer = null
+        this.index = 0
+    }
+
+    resetIndex() {
+        this.index = 0
+    }
+
+    head() {
+        return this.array.at(this.index)
+    }
+
+    moveUp() {
+        const promise = this.element.firstElementChild.children[this.index].animate({ transform: styles.translateUp }, { duration: 1000, fill: 'forwards' })
+        this.index++
+        
+        return promise.finished
     }
 
     len() {
-        return this.array.length
+        return this.index < this.array.length 
     }
 
     isNomoreDividible() {

@@ -19,7 +19,7 @@ async function recursiveDivision(arr) {
     await recursiveDivision(left)
     await recursiveDivision(right)
 
-    //sortArrays(arr, msLeft, msRight)
+    await sortArrays(arr, left, right)
 
 
 }
