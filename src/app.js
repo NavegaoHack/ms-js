@@ -3,7 +3,7 @@ import MsArray from "/src/msArray.js"
 
 const msArray = new MsArray()
 
-mainCanvas.appendChild(msArray.create([1, 2, 3, 4]))
+mainCanvas.appendChild(msArray.create([2, 1, 4, 3]))
 
 async function recursiveDivision(arr) {
     

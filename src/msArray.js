@@ -31,8 +31,26 @@ class MsArray {
         return this.array.at(this.index)
     }
 
+    dx() {
+        const x1 = this.parent.nodes(this.parent.index).getBoundingClientRect().x
+        const x2 = this.nodes(this.index).getBoundingClientRect().x
+
+        return (x2 - x1) / 16 //transform pixel to rem
+    }
+
+    translateUp() {
+        return `translate(${this.dx()}rem, -3rem)`
+    }
+
+    nodes(n) {
+        return this.element.firstElementChild.children[n]
+    }
+
     moveUp() {
-        const promise = this.element.firstElementChild.children[this.index].animate({ transform: styles.translateUp }, { duration: 1000, fill: 'forwards' })
+        //console.log(this.parent.nodes(this.parent.index))
+        //console.log(this.translateUp())
+
+        const promise = this.nodes(this.index).animate({ transform: this.translateUp() }, { duration: 1000, fill: 'forwards' })
         this.index++
         
         return promise.finished
