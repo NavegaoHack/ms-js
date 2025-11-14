@@ -3,7 +3,7 @@ import MsArray from "/src/msArray.js"
 
 const msArray = new MsArray()
 
-mainCanvas.appendChild(msArray.create([2, 1, 4, 3]))
+mainCanvas.appendChild(msArray.create([4, 3, 2, 6]))
 
 async function recursiveDivision(arr) {
     
@@ -25,6 +25,8 @@ async function recursiveDivision(arr) {
 }
 
 async function sortArrays(arr, arrLeft, arrRight) {
+    
+    arr.resetIndex()
     
     while (arrLeft.len() && arrRight.len()) {
 

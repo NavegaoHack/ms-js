@@ -32,8 +32,8 @@ class MsArray {
     }
 
     dx() {
-        const x1 = this.parent.nodes(this.parent.index).getBoundingClientRect().x
-        const x2 = this.nodes(this.index).getBoundingClientRect().x
+        const x2 = this.parent.nodes(this.parent.index).getBoundingClientRect().x
+        const x1 = this.nodes(this.index).getBoundingClientRect().x
 
         return (x2 - x1) / 16 //transform pixel to rem
     }
@@ -52,6 +52,7 @@ class MsArray {
 
         const promise = this.nodes(this.index).animate({ transform: this.translateUp() }, { duration: 1000, fill: 'forwards' })
         this.index++
+        this.parent.index++
         
         return promise.finished
     }
