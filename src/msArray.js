@@ -50,9 +50,11 @@ class MsArray {
         //console.log(this.parent.nodes(this.parent.index))
         //console.log(this.translateUp())
 
+        
+
         const promise = this.nodes(this.index).animate({ transform: this.translateUp() }, { duration: 1000, fill: 'forwards' })
-        this.index++
-        this.parent.index++
+
+        this.parent.nodes(this.parent.index++).innerText = this.nodes(this.index++).innerText
         
         return promise.finished
     }

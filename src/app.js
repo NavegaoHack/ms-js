@@ -18,7 +18,7 @@ async function recursiveDivision(arr) {
 
     await recursiveDivision(left)
     await recursiveDivision(right)
-
+    console.log(arr)
     await sortArrays(arr, left, right)
 
 
@@ -27,6 +27,8 @@ async function recursiveDivision(arr) {
 async function sortArrays(arr, arrLeft, arrRight) {
     
     arr.resetIndex()
+    arrLeft.resetIndex()
+    arrRight.resetIndex()
     
     while (arrLeft.len() && arrRight.len()) {
 
