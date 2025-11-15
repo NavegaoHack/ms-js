@@ -23,6 +23,10 @@ class MsArray {
         this.index = 0
     }
 
+    del() {
+        this.element.remove()
+    }
+
     resetIndex() {
         this.index = 0
     }

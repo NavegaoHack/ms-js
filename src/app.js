@@ -29,7 +29,7 @@ async function sortArrays(arr, arrLeft, arrRight) {
     arr.resetIndex()
     arrLeft.resetIndex()
     arrRight.resetIndex()
-    
+
     while (arrLeft.len() && arrRight.len()) {
 
         arrLeft.head() < arrRight.head() ? await arrLeft.moveUp() : await arrRight.moveUp()
@@ -39,6 +39,9 @@ async function sortArrays(arr, arrLeft, arrRight) {
     while (arrLeft.len()) await arrLeft.moveUp()
     
     while (arrRight.len()) await arrRight.moveUp()
+    
+    arrLeft.del()
+    arrRight.del()
         
     
 }
