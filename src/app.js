@@ -5,6 +5,14 @@ const msArray = new MsArray()
 
 mainCanvas.appendChild(msArray.create([4, 3, 2, 6, 1]))
 
+const storage = {
+    storage: [],
+    index: 0,
+    getCurrent: () => { return storage.storage.at(storage.index) },
+    add: (arr) => { storage.storage.push([...arr]) },
+    movePos: (forward) => { return forward ? storage.index++ : storage.index--}
+}
+
 async function recursiveDivision(arr) {
     
     if (arr.isNomoreDividible()) return
@@ -47,9 +55,12 @@ async function sortArrays(arr, arrLeft, arrRight) {
 }
 
 sortBtn.onclick = () => {
+    storage.add(msArray.array)
     recursiveDivision(msArray)
 }
 
 unsortBtn.onclick = () => {
+    msArray.array = storage.getCurrent()
+    msArray.refresh()
     console.log("initial state")
 }

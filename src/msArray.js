@@ -23,6 +23,12 @@ class MsArray {
         this.index = 0
     }
 
+    refresh() {
+        this.array.forEach((value, i) => {
+            this.nodes(i).innerText = value
+        })
+    }
+
     del() {
         this.element.remove()
     }
