@@ -8,7 +8,7 @@ mainCanvas.appendChild(msArray.create([4, 3, 2, 6, 1]))
 const storage = {
     storage: [],
     index: 0,
-    getCurrent: () => { return storage.storage.at(storage.index) },
+    getCurrent: () => { return [...storage.storage.at(storage.index)] },
     add: (arr) => { storage.storage.push([...arr]) },
     movePos: (forward) => { return forward ? storage.index++ : storage.index--}
 }
