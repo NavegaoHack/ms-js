@@ -58,7 +58,13 @@ class MsArray {
 
         const promise = this.nodes(this.index).animate({ transform: this.translateUp() }, { duration: 1000, fill: 'forwards' })
 
-        this.parent.nodes(this.parent.index++).innerText = this.nodes(this.index++).innerText
+        //change the value of the parent by the new ordered value in both array and element
+        this.parent.nodes(this.parent.index).innerText = this.nodes(this.index).innerText
+        this.parent.array[this.parent.index] = this.array[this.index]
+
+        //elevate index of parent and child
+        this.parent.index++
+        this.index++
         
         return promise.finished
     }
