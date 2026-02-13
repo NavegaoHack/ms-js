@@ -3,7 +3,7 @@ const styles = {
     array: "flex justify-center gap-8",
     relativeContainer: "relative flex justify-center",
     childrenContainer: "absolute bottom-0 left-0 right-0",
-    unit: "size-8 border-2 grid place-content-center",
+    unit: "size-8 rounded-lg bg-slate-400 text-slate-900 font-bold grid place-content-center",
     toDown: "translate-y-12",
     toLeft: "-translate-x-8",
     toRight: "translate-x-8",
