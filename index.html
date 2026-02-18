@@ -6,8 +6,29 @@
     <title>ms-js Version 3</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
-<body class="bg-slate-600">
+<body class="bg-slate-600 overflow-x-hidden">
     <h1 class="text-center text-4xl text-slate-300">MS<span class="text-xl block">JS</span></h1>
+    <!-- sidebar -->
+
+    <aside class="absolute top-8 right-0 translate-x-72 transition-all" id="viewOpts">
+        <!-- door -->
+         <div class="relative flex">
+                <svg class="translate-y-4 fill-slate-900 w-min h-12" width="36.603001mm" height="64.139999mm" viewBox="0 0 36.603001 64.139999" version="1.1" id="svg5"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <defs id="defs2" />
+                    <g id="layer1">
+                    <path class="cursor-pointer" id="rect846" d="M 138.34375 0 A 55.081497 55.546772 0 0 1 83.349609 53.205078 A 55.081497 55.546772 0 0 1 81.287109 53.126953 L 81.287109 53.179688 L 16.371094 53.179688 C 7.3010338 53.17968 -2.3684758e-15 60.482666 0 69.552734 L 0 175.15234 C 0 184.22241 7.3010338 191.52344 16.371094 191.52344 L 81.287109 191.52344 L 81.287109 191.57031 A 55.081497 55.546772 0 0 1 83.457031 191.48828 A 55.081497 55.546772 0 0 1 138.34375 242.41797 L 138.34375 175.15234 L 138.34375 74.855469 L 138.34375 69.552734 L 138.34375 0 z M 79.408203 86.236328 L 79.039062 156.17578 L 30.277344 120.92969 L 79.408203 86.236328 z "transform="scale(0.26458333)" />
+                    </g>
+                </svg>
+                <div class="bg-slate-900 w-72 rounded-xl p-4 text-slate-300">
+                    <h2 class="text-center">List</h2>
+                    <input type="text" class="border-none outline-none bg-slate-900 font-bold text-center">
+                    <div class="flex justify-center mt-2">
+                        <button id="refreshArrayBtn" class="rounded-xl bg-slate-400 active:bg-slate-300 text-slate-900 p-2 font-bold m-auto">change</button>
+                    </div>
+                </div>
+        </div>
+    </aside>
     <main class="py-24" id="mainCanvas">
         <!-- render array here by javascript -->
     </main>
