@@ -1,3 +1,5 @@
+import options from "./options.js"
+
 // store styles
 const styles = {
     array: "flex justify-center gap-8",
@@ -62,7 +64,7 @@ class MsArray {
 
         
 
-        const promise = this.nodes(this.index).animate({ transform: this.translateUp() }, { duration: 1000, fill: 'forwards' })
+        const promise = this.nodes(this.index).animate({ transform: this.translateUp() }, { duration: options.speed, fill: 'forwards' })
 
         //change the value of the parent by the new ordered value in both array and element
         this.parent.nodes(this.parent.index).innerText = this.nodes(this.index).innerText
@@ -151,7 +153,7 @@ class MsArray {
         //this.element.classList.add(styles.toDown)
         //to ? this.element.classList.add(styles.toRight) : this.element.classList.add(styles.toLeft)
     
-        const animation = this.element.animate({ transform: to ? styles.translateRight : styles.translateLeft }, { duration: 1000, fill: 'forwards' })
+        const animation = this.element.animate({ transform: to ? styles.translateRight : styles.translateLeft }, { duration: options.speed, fill: 'forwards' })
 
         return animation.finished
     }

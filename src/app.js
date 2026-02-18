@@ -79,5 +79,6 @@ options.saveBtn.onclick = () => {
     msArray.array = storage.getCurrent()
     msArray.refresh()
 }
+options.saveSpeedBtn.onclick = options.refreshSpeed
 
 export default storage
